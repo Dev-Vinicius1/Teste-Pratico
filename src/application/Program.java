@@ -15,7 +15,7 @@ public class Program {
 
         funcionarioServices.adicionarNovoFuncionario(new Funcionario("Maria", LocalDate.of(2000,10,18), new BigDecimal(2009.44), "Operador"));
         funcionarioServices.adicionarNovoFuncionario(new Funcionario("João", LocalDate.of(1980,5,1), new BigDecimal(5009.44), "Gerente"));
-        funcionarioServices.adicionarNovoFuncionario(new Funcionario("Maria", LocalDate.of(2000,10,18), new BigDecimal(2009.44), "Operador"));
+        funcionarioServices.adicionarNovoFuncionario(new Funcionario("Maria", LocalDate.of(2000,4,18), new BigDecimal(2009.44), "Operador"));
 
         funcionarioServices.imprimirTodosFuncionarios();
 
@@ -25,14 +25,20 @@ public class Program {
 
         Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarioServices.agrupaFuncionarioPorFuncao();
 
-        System.out.println("Funcionários agrupados por função:");
-        for(String funcao : funcionariosPorFuncao.keySet()){
-            System.out.println("Função: " + funcao);
-            List<Funcionario> funcionarioDaFuncao = funcionariosPorFuncao.get(funcao);
-            for(Funcionario f: funcionarioDaFuncao){
-                System.out.println(" " + f);
-            }
-        }
+//        System.out.println("Funcionários agrupados por função:");
+//        for(String funcao : funcionariosPorFuncao.keySet()){
+//            System.out.println("Função: " + funcao);
+//            List<Funcionario> funcionarioDaFuncao = funcionariosPorFuncao.get(funcao);
+//            for(Funcionario f: funcionarioDaFuncao){
+//                System.out.println(" " + f);
+//            }
+//        }
+//
+//        List<Funcionario> aniversariantes = funcionarioServices.aniversarianteDoMes(4,5);
+//        System.out.println(aniversariantes);
+
+
+        System.out.println(funcionarioServices.listarFuncionarioMaisVelho());
 
 
 

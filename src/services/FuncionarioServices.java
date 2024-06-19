@@ -3,10 +3,9 @@ package services;
 import entities.Funcionario;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FuncionarioServices {
@@ -60,6 +59,35 @@ public class FuncionarioServices {
         }
         return funcionariosPorFuncao;
     }
+
+    public List<Funcionario> aniversarianteDoMes(int... mes){
+        Set<Integer> mesesSet = Arrays.stream(mes).boxed().collect(Collectors.toSet());
+
+        List<Funcionario> aniversariantes = funcionarios.stream().
+                filter(funcionario -> mesesSet.contains(funcionario.getDataDeNascimento().getMonthValue())).
+                collect(Collectors.toList());
+
+        return aniversariantes;
+
+    }
+
+
+    public String listarFuncionarioMaisVelho(){
+        Funcionario funcionarioMaisVelho = funcionarios.stream().
+                min(Comparator.comparing(Funcionario::getDataDeNascimento)).
+                orElseThrow(NoSuchElementException::new);
+
+        int idade = calcularIdade(funcionarioMaisVelho.getDataDeNascimento());
+
+        return "Nome: " + funcionarioMaisVelho.getNome() + ", Idade: " + idade;
+
+    }
+
+    private int calcularIdade(LocalDate dataDeNascimento){
+        LocalDate dataAtual = LocalDate.now();
+        return Period.between(dataDeNascimento, dataAtual).getYears();
+    }
+
 
 
 
