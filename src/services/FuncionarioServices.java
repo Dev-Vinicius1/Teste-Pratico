@@ -5,6 +5,7 @@ import entities.Funcionario;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -60,15 +61,36 @@ public class FuncionarioServices {
         return funcionariosPorFuncao;
     }
 
-    public List<Funcionario> aniversarianteDoMes(int... mes){
-        Set<Integer> mesesSet = Arrays.stream(mes).boxed().collect(Collectors.toSet());
 
-        List<Funcionario> aniversariantes = funcionarios.stream().
-                filter(funcionario -> mesesSet.contains(funcionario.getDataDeNascimento().getMonthValue())).
-                collect(Collectors.toList());
+//    public List<String> aniversariantesDoMes(int mes){
+//        List<String> aniversariantes = new ArrayList<>();
+//        for (int i=0; i < funcionarios.size(); i++){
+//            Funcionario funcionario = funcionarios.get(i);
+//            if(funcionario.getDataDeNascimento().getMonthValue() == mes){
+//                aniversariantes.add(funcionario.toString());
+//            }
+//        }
+//        return aniversariantes;
+//    }
 
-        return aniversariantes;
+    public String aniversariantesDoMes(int mes){
+        StringBuilder stringBuilder = new StringBuilder();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
 
+
+        for(int i=0; i<funcionarios.size(); i++){
+            Funcionario funcionario = funcionarios.get(i);
+            if(funcionario.getDataDeNascimento().getMonthValue() == mes){
+                String salarioFormatado = decimalFormat.format(funcionario.getSalario());
+                stringBuilder.append("Nome: ").append(funcionario.getNome()).append(", ")
+                        .append("Data de Nascimento: ").append(funcionario.getDataDeNascimento()
+                                .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).append(", ")
+                        .append("Salário: ").append(decimalFormat.format(funcionario.getSalario())).append(", ")
+                        .append("Função: ").append(funcionario.getFuncao()).append("\n");
+            }
+        }
+        return stringBuilder.toString();
     }
 
 
