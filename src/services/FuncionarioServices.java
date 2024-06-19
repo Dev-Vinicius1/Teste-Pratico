@@ -95,6 +95,7 @@ public class FuncionarioServices {
         StringBuilder stringBuilder = new StringBuilder();
         for(Funcionario funcionario : funcionarios){
             DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+
             stringBuilder.append("Nome: ").append(funcionario.getNome()).append(", ")
                     .append("Data de Nascimento: ").append(funcionario.getDataDeNascimento()
                             .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).append(", ")
@@ -105,6 +106,21 @@ public class FuncionarioServices {
         return stringBuilder.toString();
     }
 
+
+    public BigDecimal calculaTodosOsSalarios(){
+        BigDecimal totalSalarios = BigDecimal.ZERO;
+
+        for(Funcionario funcionario : funcionarios){
+            totalSalarios = totalSalarios.add((funcionario.getSalario()));
+        }
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+        String salariosFormatado = decimalFormat.format(totalSalarios);
+
+        System.out.println("Total de todos os salários: " + salariosFormatado);
+
+        return totalSalarios;
+    }
 
 
 }

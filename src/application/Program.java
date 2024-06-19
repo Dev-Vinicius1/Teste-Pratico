@@ -42,6 +42,9 @@ public class Program {
 
         System.out.println(funcionarioServices.funcionariosPorOrdemAlfabetica());
 
+        funcionarioServices.calculaTodosOsSalarios();
+
+
 
     }
 }
