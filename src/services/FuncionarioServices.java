@@ -122,5 +122,27 @@ public class FuncionarioServices {
         return totalSalarios;
     }
 
+    public String calculaSalarioMinimos(BigDecimal salarioMinimo){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+
+        for(int i = 0; i < funcionarios.size(); i++){
+            Funcionario funcionario = funcionarios.get(i);
+            BigDecimal salarioFuncionario = funcionario.getSalario();
+
+            BigDecimal salariosMinimos = salarioFuncionario.divide(salarioMinimo,2, BigDecimal.ROUND_HALF_UP);
+
+            stringBuilder.append("Funcionário: ").append(funcionario.getNome()).
+                    append(", Salário: ").append(decimalFormat.format(salarioFuncionario)).
+                    append(", Salário Mínimos: ").append(decimalFormat.format(salariosMinimos)).append("\n");
+
+        }
+
+        return stringBuilder.toString();
+
+    }
+
+
 
 }

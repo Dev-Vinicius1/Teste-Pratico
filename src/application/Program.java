@@ -44,6 +44,10 @@ public class Program {
 
         funcionarioServices.calculaTodosOsSalarios();
 
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+        String salariosMinimo = funcionarioServices.calculaSalarioMinimos(salarioMinimo);
+        System.out.println("Salários Mínimos: ");
+        System.out.println(salariosMinimo);
 
 
     }
