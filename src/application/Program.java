@@ -40,6 +40,7 @@ public class Program {
 
         System.out.println(funcionarioServices.listarFuncionarioMaisVelho());
 
+        System.out.println(funcionarioServices.funcionariosPorOrdemAlfabetica());
 
 
     }

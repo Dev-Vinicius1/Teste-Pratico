@@ -3,8 +3,11 @@ package services;
 import entities.Funcionario;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,9 +27,6 @@ public class FuncionarioServices {
         funcionarios.removeIf(funcionario -> funcionario.getNome().equals(nome));
     }
 
-//    private String formatarDadosFuncionarios(Funcionario funcionario){
-//        return funcionario.toString().replace(".", ",");
-//    }
 
     public void imprimirTodosFuncionarios(){
         for(int i=0; i < funcionarios.size(); i++){
@@ -89,6 +89,21 @@ public class FuncionarioServices {
     }
 
 
+    public String funcionariosPorOrdemAlfabetica(){
+        funcionarios.sort(Comparator.comparing(Funcionario::getNome));
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Funcionario funcionario : funcionarios){
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+            stringBuilder.append("Nome: ").append(funcionario.getNome()).append(", ")
+                    .append("Data de Nascimento: ").append(funcionario.getDataDeNascimento()
+                            .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).append(", ")
+                    .append("Salário: ").append(decimalFormat.format(funcionario.getSalario())).append(", ")
+                    .append("Função: ").append(funcionario.getFuncao()).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
 
 
 
