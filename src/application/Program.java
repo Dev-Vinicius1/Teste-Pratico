@@ -75,7 +75,7 @@ public class Program {
 
 
         // imprimindo o funcionário com a maior idade
-        System.out.println("Imprimindo o funcionário com a maior idade:\n " +
+        System.out.println("Imprimindo o funcionário com a maior idade:\n\n" +
                 funcionarioServices.listarFuncionarioMaisVelho());
 
         System.out.println("----------------------------------------------------------");
@@ -94,7 +94,7 @@ public class Program {
         System.out.println("Imprimindo quantos salários mínimos cada funcionário recebe:\n");
         BigDecimal salarioMinimo = new BigDecimal("1212.00");
         String salariosMinimo = funcionarioServices.calculaSalarioMinimos(salarioMinimo);
-        System.out.println("Salários Mínimos: ");
+        System.out.println("Salários Mínimos: \n");
         System.out.println(salariosMinimo);
 
 

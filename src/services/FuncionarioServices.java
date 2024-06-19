@@ -62,16 +62,6 @@ public class FuncionarioServices {
     }
 
 
-//    public List<String> aniversariantesDoMes(int mes){
-//        List<String> aniversariantes = new ArrayList<>();
-//        for (int i=0; i < funcionarios.size(); i++){
-//            Funcionario funcionario = funcionarios.get(i);
-//            if(funcionario.getDataDeNascimento().getMonthValue() == mes){
-//                aniversariantes.add(funcionario.toString());
-//            }
-//        }
-//        return aniversariantes;
-//    }
 
     public String aniversariantesDoMes(int mes){
         StringBuilder stringBuilder = new StringBuilder();
