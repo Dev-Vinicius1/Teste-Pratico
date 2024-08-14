@@ -13,7 +13,6 @@ public class Program {
     public static void main(String[] args) {
         FuncionarioServices funcionarioServices = new FuncionarioServices();
 
-        // inserindo todos os funcionários de acordo com a ordem da tabela.
         funcionarioServices.adicionarNovoFuncionario(new Funcionario("Maria", LocalDate.of(2000,10,18), new BigDecimal(2009.44), "Operador"));
         funcionarioServices.adicionarNovoFuncionario(new Funcionario("João", LocalDate.of(1990,5,12), new BigDecimal(2284.38), "Operador"));
         funcionarioServices.adicionarNovoFuncionario(new Funcionario("Caio", LocalDate.of(1961,5,2), new BigDecimal(9836.14), "Coordenador"));
@@ -26,27 +25,21 @@ public class Program {
         funcionarioServices.adicionarNovoFuncionario(new Funcionario("Helena", LocalDate.of(1996,9,2), new BigDecimal(2799.93), "Gerente"));
 
 
-        // removendo o funcionário "João" da lista.
         funcionarioServices.removerFuncionario("João");
 
-
-        // imprimindo todas os funcionários.
+        
         System.out.println("Lista com todos os funcionários: \n");
         funcionarioServices.imprimirTodosFuncionarios();
         System.out.println("----------------------------------------------------------");
 
-
-        // funcionários receberam 10% de aumento no salário.
+        
         System.out.println("Lista com o aumento de 10% sobre o salário de todos os funcionários: \n");
         funcionarioServices.aumentoDeSalario(new BigDecimal("0.1"));
 
 
-
-        // imprimindo todos os funcionários novamente, mas agora com os salários atualizados.
         funcionarioServices.imprimirTodosFuncionarios();
 
 
-        // agrupando todos os funcionários por função.
         Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarioServices.agrupaFuncionarioPorFuncao();
 
         System.out.println("----------------------------------------------------------");
@@ -61,7 +54,6 @@ public class Program {
             }
         }
 
-        // imprimindo os aniversariantes do mês 10 e 12.
         System.out.println("----------------------------------------------------------");
         System.out.println("Imprimindo os funcionários que fazem aniversário no mês 10 e 12:\n");
         System.out.println("Mês de Outubro:");
@@ -74,13 +66,11 @@ public class Program {
         System.out.println("----------------------------------------------------------");
 
 
-        // imprimindo o funcionário com a maior idade
         System.out.println("Imprimindo o funcionário com a maior idade:\n\n" +
                 funcionarioServices.listarFuncionarioMaisVelho());
 
         System.out.println("----------------------------------------------------------");
 
-        // imprimindo a lista em ordem alfabética.
         System.out.println("Imprimindo a lista de funcionários em ordem alfabética: \n\n" +
                 funcionarioServices.funcionariosPorOrdemAlfabetica());
         System.out.println("----------------------------------------------------------");
