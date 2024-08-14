@@ -37,9 +37,7 @@ public class Funcionario extends Pessoa{
 
 
     public String toString(){
-        // cria uma nova instancia no formato "dd/MM/yyyy" para datas de nascimento.
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        // cria uma nova instancia no formato no formato "#.###,##" padrão Americano.
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
 
         return "Nome: " + getNome() +
