@@ -46,7 +46,6 @@ public class FuncionarioServices {
         }
     }
 
-    // agrupa os funcionários pela sua função
     public Map<String, List<Funcionario>> agrupaFuncionarioPorFuncao(){
         Map<String, List<Funcionario>> funcionariosPorFuncao = new HashMap<>();
 
